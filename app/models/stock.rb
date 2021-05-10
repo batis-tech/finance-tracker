@@ -12,7 +12,11 @@ class Stock < ApplicationRecord
       new(ticker: ticker_symbol, name: client.company(ticker_symbol).company_name, last_price: client.price(ticker_symbol))
 
     rescue => exception
-
+      return nil
     end
+  end
+  def self.check_db(ticker_symbol)
+    where(ticker: ticker_symbol).first
+
   end
 end

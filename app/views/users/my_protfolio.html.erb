@@ -15,6 +15,10 @@
 </div>
 <% end %>
 </div>
-<div class="" id="result">
+<div class="" id="result" style="margin-bottom:1rem">
 
 </div>
+
+<% if !@tracked_stocks.empty? %>
+ <%= render 'stocks/list'%>
+<% end %>
