@@ -1,0 +1,21 @@
+<h2><%= @user.full_name %>'s prosfile</h2>
+<div class="results-block">
+  <%= render 'layouts/messages' %>
+</div>
+<div class="card card-header results-block mt-1">
+  <strong>Name:</strong><%= @user.full_name %>
+  <strong>Email:</strong><%= @user.email %>
+  <strong>Action:</strong>
+  <% if current_user.not_friends_with?(@user.id) %>
+    <%= link_to 'Follow friend?', friendships_path(friend: @user), class: "btn btn-sm btn-success", method: :post %>
+  <% else %>
+    <span class="badge badge-secondary">
+      You are friends</span>
+  <% end %>
+</div>
+<br><br>
+<% if !@tracked_stocks.empty? %>
+ <%= render 'stocks/list'%>
+<% else %>
+<p class=" this users not tracking any stocks yet"></p>
+<% end %>
